@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# XPARTEX Frontend Developer Assessment
 
-## Getting Started
+This project is a frontend assessment task to demonstrate planning, design sense, reusable component architecture, and clean frontend workflow using Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. Planning Approach
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before starting development, the project was carefully planned to ensure scalability, reusability, and clean structure.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Page Layout Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application is a single-page Facebook-style profile layout consisting of:
 
-## Learn More
+- Profile Header (cover image, avatar, name, basic info)
+- Left Sidebar (Intro, Photos, Friends sections)
+- Main Feed Area (Post list)
+- Responsive layout adapting for desktop, tablet, and mobile screens
 
-To learn more about Next.js, take a look at the following resources:
+The left sidebar remains sticky while scrolling but stays flexible (not fully fixed).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Component Breakdown
 
-## Deploy on Vercel
+--------------------------------------------------------
+|                   Profile Header                     | 
+--------------------------------------------------------
+   -------------------------------------------------
+   |        Cover Image & Profile avatar           |
+   -------------------------------------------------
+   | Left Sidebar  |        Post Feed              |
+   | (Intro etc.)  |   PostCard 1                  |
+   |               |   PostCard 2                  |
+   -------------------------------------------------
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Reusable Components
+These components are designed to be generic and reusable across the application:
+
+- Avatar  
+- Button  
+- PostCard  
+- SkeletonLoader  
+- SectionCard  
+
+#### Page-Specific Components
+These components are specific to the profile page:
+
+- ProfileHeader  
+- IntroSection  
+- PhotosSection  
+- FriendsSection  
+- Feed  
+
+This separation ensures better maintainability and scalability.
+
+---
+
+### Color, Spacing & Design Guidelines
+
+The design follows a Facebook-like clean UI approach:
+
+- Primary Color: `#1877F2`
+- Background Color: `#F0F2F5`
+- Card Background: `#FFFFFF`
+- Text Primary: `#050505`
+- Border Radius: 8px – 12px
+- Spacing Scale: 4, 8, 12, 16, 24
+
+Tailwind CSS utility classes are used consistently to maintain spacing and responsiveness.
+
+---
+
+### Folder Structure
+
+A clean and scalable folder structure is used:
+
+├── app/
+│   └── page.tsx
+│
+├── components/
+│   ├── layout/
+│   │   └── TopNavbar.tsx
+│   │
+│   ├── profile/
+│   │   ├── ProfileHeader.tsx
+│   │   ├── IntroSection.tsx
+│   │   ├── PhotosSection.tsx
+│   │   └── LeftSidebar.tsx
+│   │
+│   ├── post/
+│   │   ├── PostFeed.tsx
+│   │   └── PostCard.tsx
+│   │
+│   └── ui/
+│       ├── Avatar.tsx
+│       ├── Button.tsx
+│       ├── Card.tsx
+│       └── Skeleton.tsx
+│
+├── data/
+│   ├── profile.json
+│   └── posts.json
+│
+├── types/
+│   ├── profile.ts
+│   └── post.ts
+│
+└── styles/
+
+
+- `components/` contains reusable and page-specific UI components
+- `data/` stores local JSON files for demo data
+- `types/` contains TypeScript interfaces
+- `styles/` is reserved for custom global styles if needed
+
+---
+
+### Data Flow & State Management
+
+- No backend or external APIs are used
+- Profile and post data are loaded from local JSON files
+- Data is passed to components via props
+- A skeleton loading state is shown while data is being prepared
+
+---
+
+### Responsiveness Strategy
+
+- Mobile-first approach
+- Tailwind responsive utilities (`md`, `lg`)
+- Sidebar hides or stacks on smaller screens
+- Feed layout adjusts naturally based on screen size
+
+---
+
+### Development Principles
+
+- Component-driven development
+- Strong TypeScript typing
+- Clean and readable code
+- Meaningful Git commit messages
+- Incremental development with frequent commits
+
+---
+
+This planning phase was completed before development to ensure a structured and efficient workflow.
