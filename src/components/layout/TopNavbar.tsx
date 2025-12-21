@@ -1,91 +1,143 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FiMenu, FiX, FiBell } from 'react-icons/fi';
-import Button from '../ui/Button';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import {
+  FaSearch,
+  FaFacebookMessenger,
+  FaUserCircle,
+  FaBars,
+} from "react-icons/fa";
+import { FiBell } from "react-icons/fi";
+
+import logo from "../../../public/logo/logo.png";
+import home from "../../../public/icon/home.png";
+import marketplace from "../../../public/icon/maketplace.png";
+import group from "../../../public/icon/group.png";
+import gaming from "../../../public/icon/gamming.png";
+import Button from "../ui/Button";
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: "Home", href: "#", icon: home, active: true },
+  { name: "Marketplace", href: "#", icon: marketplace },
+  { name: "Groups", href: "#", icon: group },
+  { name: "Gaming", href: "#", icon: gaming },
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+type IconButtonProps = {
+  children: React.ReactNode;
+  onClick?: () => void;
+};
+
+const IconButton = ({ children, onClick }: IconButtonProps) => (
+  <button
+    onClick={onClick}
+    className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 transition"
+  >
+    {children}
+  </button>
+);
 
 export default function TopNavbar() {
-  const [open, setOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Left */}
-          <div className="flex items-center">
-            <Image
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-              alt="Logo"
-              width={32}
-              height={32}
+    <header className="fixed top-0 inset-x-0 z-50 bg-white shadow-sm">
+      <div className="flex h-14 items-center px-3 lg:px-4">
+        {/* LEFT */}
+        <div className="flex items-center gap-2 w-1/2 lg:w-[320px]">
+          <Image src={logo} alt="Facebook" width={40} height={40} priority />
+
+          {/* Mobile Search Icon */}
+          <div className="lg:hidden">
+            <IconButton>
+              <FaSearch size={14} />
+            </IconButton>
+          </div>
+
+          {/* Desktop Search */}
+          <div className="relative hidden lg:block w-full">
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+            <input
+              placeholder="Search Facebook"
+              className="w-full rounded-full bg-gray-100 pl-10 pr-4 py-2 text-sm focus:outline-none"
             />
-            <div className="hidden sm:flex sm:ml-6 space-x-4">
-              {navigation.map((item) => (
+          </div>
+        </div>
+
+        {/* CENTER (Desktop only) */}
+        <nav className="flex-1 hidden lg:flex justify-center">
+          <ul className="flex gap-2">
+            {navigation.map((item) => (
+              <li key={item.name}>
                 <Link
-                  key={item.name}
                   href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                    'rounded-md px-3 py-2 text-sm font-medium'
-                  )}
+                  className={`flex items-center justify-center w-28 h-14 transition ${
+                    item.active
+                      ? "border-b-[3px] border-blue-600"
+                      : "hover:bg-gray-100 rounded-lg"
+                  }`}
                 >
-                  {item.name}
+                  <Image
+                    src={item.icon}
+                    alt={item.name}
+                    width={26}
+                    height={26}
+                  />
                 </Link>
-              ))}
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Right */}
-          <div className="flex items-center space-x-4">
-            <Button>
-              <FiBell size={20} />
-            </Button>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="sm:hidden text-gray-400 hover:text-white"
-            >
-              {open ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+        {/* RIGHT */}
+        <div className="flex items-center gap-2 w-1/2 lg:w-[320px] justify-end">
+          {/* Mobile Menu */}
+          <div className="lg:hidden">
+            <IconButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              <FaBars size={18} />
+            </IconButton>
           </div>
+        
+          <Button>
+            <FaFacebookMessenger size={18} />
+          </Button>
+
+          <Button>
+            <FiBell size={18} />
+          </Button>
+
+          <Button>
+            <FaUserCircle size={26} className="text-gray-500" />
+          </Button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className="sm:hidden px-4 pb-3 space-y-1">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={classNames(
-                item.current
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium'
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-14 left-0 right-0 bg-white shadow-md">
+          <ul className="flex flex-col">
+            {navigation.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-4 px-4 py-3 hover:bg-gray-100"
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.name}
+                    width={24}
+                    height={24}
+                  />
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

@@ -3,10 +3,8 @@ type ButtonProps = {
 };
 export default function Button({ children }: ButtonProps) {
   return (
-      <button className="px-4 py-2 rounded-md bg-blue-600 text-white">
+    <button className="p-3 rounded-full bg-gray-200 text-black">
       {children}
     </button>
-  )
+  );
 }
-
-
