@@ -1,0 +1,12 @@
+{
+  "id": "1",
+  "name": "AnyAgency",
+  "avatar": "/images/avatar.png",
+  "coverImage": "/images/cover.png",
+  "bio": "Platform that delivers world-class services through meaningful insights powered by billions of data points.",
+  "location": "Aylesbury, 123 Main Street, Anycity, Anycountry",
+  "phone": "(555) 123-4567",
+  "website": "anyagency.com",
+  "workingHours": "9:00 AM - 7:00 PM",
+  "followers": "13k likes · 45k followers"
+}

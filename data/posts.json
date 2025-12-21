@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "author": "AnyAgency",
+    "authorAvatar": "/images/avatar.png",
+    "content": "Introducing AnyAgency’s latest innovation!",
+    "image": "/images/post1.png",
+    "createdAt": "2h",
+    "likes": 120,
+    "comments": 15
+  },
+  {
+    "id": "2",
+    "author": "AnyAgency",
+    "authorAvatar": "/images/avatar.png",
+    "content": "Introducing AnyAgency’s latest innovation!",
+    "image": "/images/post2.png",
+    "createdAt": "2h",
+    "likes": 120,
+    "comments": 15
+  },
+  {
+    "id": "3",
+    "author": "AnyAgency",
+    "authorAvatar": "/images/avatar.png",
+    "content": "Introducing AnyAgency’s latest innovation!",
+    "image": "/images/post3.png",
+    "createdAt": "2h",
+    "likes": 120,
+    "comments": 15
+  }
+]
