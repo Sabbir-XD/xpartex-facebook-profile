@@ -1,12 +1,12 @@
 {
   "id": "1",
   "name": "AnyAgency",
-  "avatar": "/images/avatar.png",
-  "coverImage": "/images/cover.png",
-  "bio": "Platform that delivers world-class services through meaningful insights powered by billions of data points.",
-  "location": "Aylesbury, 123 Main Street, Anycity, Anycountry",
-  "phone": "(555) 123-4567",
-  "website": "anyagency.com",
-  "workingHours": "9:00 AM - 7:00 PM",
-  "followers": "13k likes · 45k followers"
+  "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+  "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c",
+  "bio": "A digital agency delivering world-class marketing, branding, and software solutions powered by data-driven insights.",
+  "location": "Aylesbury, Buckinghamshire, United Kingdom",
+  "phone": "+44 1296 123456",
+  "website": "https://anyagency.com",
+  "workingHours": "9:00 AM – 7:00 PM (Mon–Sat)",
+  "followers": "13K likes · 45K followers"
 }
