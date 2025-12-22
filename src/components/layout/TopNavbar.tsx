@@ -9,7 +9,6 @@ import {
   FaUserCircle,
   FaBars,
 } from "react-icons/fa";
-import { FiBell } from "react-icons/fi";
 
 import logo from "../../../public/logo/logo.png";
 import home from "../../../public/icon/home.png";
@@ -17,6 +16,8 @@ import marketplace from "../../../public/icon/maketplace.png";
 import group from "../../../public/icon/group.png";
 import gaming from "../../../public/icon/gamming.png";
 import Button from "../ui/Button";
+import { CgMenuGridO } from "react-icons/cg";
+import { IoNotifications } from "react-icons/io5";
 
 const navigation = [
   { name: "Home", href: "#", icon: home, active: true },
@@ -52,7 +53,7 @@ export default function TopNavbar() {
           {/* Mobile Search Icon */}
           <div className="lg:hidden">
             <IconButton>
-              <FaSearch size={14} />
+              <FaSearch size={20} />
             </IconButton>
           </div>
 
@@ -99,17 +100,20 @@ export default function TopNavbar() {
               <FaBars size={18} />
             </IconButton>
           </div>
+          <Button className="bg-gray-200 rounded-full" >
+            <CgMenuGridO size={22} />
+          </Button>     
         
-          <Button>
-            <FaFacebookMessenger size={18} />
+          <Button className="bg-gray-200 rounded-full">
+            <FaFacebookMessenger size={22} />
           </Button>
 
-          <Button>
-            <FiBell size={18} />
-          </Button>
+          <Button className="bg-gray-200 rounded-full">
+            <IoNotifications size={22} />
+          </Button >
 
-          <Button>
-            <FaUserCircle size={26} className="text-gray-500" />
+          <Button className="bg-gray-200 rounded-full">
+            <FaUserCircle size={22} className="text-gray-500" />
           </Button>
         </div>
       </div>

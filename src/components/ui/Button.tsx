@@ -1,10 +1,18 @@
 type ButtonProps = {
   children: React.ReactNode;
+  className?: string;
 };
-export default function Button({ children }: ButtonProps) {
+
+const Button = ({ children, className = "" }: ButtonProps) => {
+  const base =
+    "p-2 text-sm font-medium transition";
+
   return (
-    <button className="p-3 rounded-full bg-gray-200 text-black">
+    <button className={`${base} ${className}`}>
       {children}
     </button>
   );
-}
+};
+
+export default Button;
+
