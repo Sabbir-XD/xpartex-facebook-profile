@@ -4,6 +4,9 @@ This project is a frontend assessment task to demonstrate planning, design sense
 
 ---
 
+**Live Demo:** [Click here](https://xpartex-facebook-profile.vercel.app/)
+
+
 ## 1. Planning Approach
 
 Before starting development, the project was carefully planned to ensure scalability, reusability, and clean structure.
